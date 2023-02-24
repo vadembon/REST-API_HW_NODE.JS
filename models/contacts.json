@@ -54,12 +54,6 @@
     "phone": "(704) 398-7993"
   },
   {
-    "id": "10",
-    "name": "Alec Howard",
-    "email": "Donec.elementum@scelerisquescelerisquedui.net",
-    "phone": "(748) 206-2688"
-  },
-  {
     "id": "Gxee67UweGLnSjqn6572g",
     "name": "David",
     "email": "dev@mail.com",
@@ -67,8 +61,20 @@
   },
   {
     "id": "B4UO3CwNOwaVMs_kFMrjA",
-    "name": "Sem",
-    "email": "sem@mail.com",
-    "phone": "(555) 444-4444"
+    "name": "Max",
+    "email": "tom@mail.com",
+    "phone": "(222) 777-9999"
+  },
+  {
+    "id": "j6hM5NAhY_xlBFPaZAcBK",
+    "name": "Joi",
+    "email": "tom@mail.com",
+    "phone": "000-000 0000"
+  },
+  {
+    "id": "gWk5aLGdzoxipgFWYamay",
+    "name": "Ray",
+    "email": "ray@mail.com",
+    "phone": "111-000 0000"
   }
 ]
