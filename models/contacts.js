@@ -42,9 +42,10 @@ const updateContact = async (id, body) => {
   if (index === -1) {
     return null;
   }
-  contacts[index] = { id, ...body };
-  await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
-  return contacts;
+  const result = { ...contacts[index], ...body };
+  contacts.splice(index, 1, result);
+  fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
+  return result;
 };
 
 module.exports = {

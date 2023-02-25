@@ -4,12 +4,16 @@ const Joi = require("joi");
 
 const { HttpError } = require("../../utils");
 
-const addSchema = Joi.object({
+const addSchemaPost = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().required(),
   phone: Joi.string().required(),
 });
-
+const addSchemaPut = Joi.object({
+  name: Joi.string(),
+  email: Joi.string(),
+  phone: Joi.string(),
+});
 const router = express.Router();
 
 router.get("/", async (req, res, next) => {
@@ -35,7 +39,7 @@ router.get("/:id", async (req, res, next) => {
 });
 
 router.post("/", async (req, res, next) => {
-  const { error } = addSchema.validate(req.body);
+  const { error } = addSchemaPost.validate(req.body);
   if (error) {
     throw HttpError(400, error.message);
   }
@@ -61,7 +65,7 @@ router.delete("/:id", async (req, res, next) => {
 
 router.put("/:id", async (req, res, next) => {
   try {
-    const { error } = addSchema.validate(req.body);
+    const { error } = addSchemaPut.validate(req.body);
     if (error) {
       throw HttpError(400, "missing fields");
     }
