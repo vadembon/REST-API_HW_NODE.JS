@@ -13,7 +13,7 @@ const listContacts = async (req, res) => {
 const getContactById = async (req, res) => {
   const { id } = req.params;
   const { _id: owner } = req.user;
-  const data = await Contact.findById({ _id: id, owner });
+  const data = await Contact.findOne({ _id: id, owner });
   if (!data) {
     throw HttpError(404, "Not found");
   }
@@ -29,15 +29,19 @@ const addContact = async (req, res) => {
 const updateContact = async (req, res) => {
   const { id } = req.params;
   const { _id: owner } = req.user;
-  const result = await Contact.findById({ _id: id, owner }, req.body, {
-    new: true,
-  });
+  const result = await Contact.findByIdAndUpdate(
+    id,
+    { ...req.body, owner },
+    {
+      new: true,
+    }
+  );
   if (!result) {
     throw HttpError(404, "Not found");
   }
-  await Contact.updateOne({ _id: id, owner }, req.body, {
-    new: true,
-  });
+  // await Contact.updateOne({ _id: id, owner }, req.body, {
+  //   new: true,
+  // });
 
   res.status(200).json(result);
 };
@@ -45,15 +49,16 @@ const updateContact = async (req, res) => {
 const updateFavorite = async (req, res) => {
   const { id } = req.params;
   const { _id: owner } = req.user;
-  const result = await Contact.findById({ _id: id, owner }, req.body, {
-    new: true,
-  });
+  const result = await Contact.findByIdAndUpdate(
+    id,
+    { ...req.body, owner },
+    {
+      new: true,
+    }
+  );
   if (!result) {
     throw HttpError(404, "Not found");
   }
-  await Contact.updateOne({ _id: id, owner }, req.body, {
-    new: true,
-  });
 
   res.status(200).json(result);
 };
