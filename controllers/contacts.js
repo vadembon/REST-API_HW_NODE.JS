@@ -29,19 +29,12 @@ const addContact = async (req, res) => {
 const updateContact = async (req, res) => {
   const { id } = req.params;
   const { _id: owner } = req.user;
-  const result = await Contact.findByIdAndUpdate(
-    id,
-    { ...req.body, owner },
-    {
-      new: true,
-    }
-  );
+  const result = await Contact.findOneAndUpdate({ _id: id, owner }, req.body, {
+    new: true,
+  });
   if (!result) {
     throw HttpError(404, "Not found");
   }
-  // await Contact.updateOne({ _id: id, owner }, req.body, {
-  //   new: true,
-  // });
 
   res.status(200).json(result);
 };
@@ -49,13 +42,9 @@ const updateContact = async (req, res) => {
 const updateFavorite = async (req, res) => {
   const { id } = req.params;
   const { _id: owner } = req.user;
-  const result = await Contact.findByIdAndUpdate(
-    id,
-    { ...req.body, owner },
-    {
-      new: true,
-    }
-  );
+  const result = await Contact.findOneAndUpdate({ _id: id, owner }, req.body, {
+    new: true,
+  });
   if (!result) {
     throw HttpError(404, "Not found");
   }
