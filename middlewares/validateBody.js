@@ -1,6 +1,6 @@
 const { HttpError } = require("../utils");
 
-const walidateBody = (schema) => {
+const validateBody = (schema) => {
   const func = (req, res, next) => {
     const { error } = schema.validate(req.body);
     if (error) {
@@ -11,4 +11,4 @@ const walidateBody = (schema) => {
   return func;
 };
 
-module.exports = walidateBody;
+module.exports = validateBody;
